@@ -65,7 +65,6 @@ def main():
     arr = [1, 2, 3, 4, 5]
 
     while True:
-        clear_screen()
         print("Array Operations:")
         print("1. Insert")
         print("2. Display")
@@ -75,6 +74,7 @@ def main():
         print("6. Exit")
 
         choice = int(input("Enter your choice: "))
+        clear_screen()
 
         if choice == 1:
             target = int(input("Enter the element to insert: "))

@@ -15,7 +15,7 @@ def create(arr):
 
 
 def get_node_at(head, position):
-    """Return the node at a specific position (1-based index)."""
+    """Return the node at a specific position (1-based index)."""    
     current = head
     for _ in range(position - 1):
         if current is None:
@@ -26,6 +26,10 @@ def get_node_at(head, position):
 
 def insert(head, target, position):
     """Insert an element at a given position in the linked list."""
+    if position < 1:
+        print("Invalid position")
+        return head
+
     new_node = Node(target)
     if position == 1:
         new_node.next = head
@@ -53,12 +57,14 @@ def display(head):
 def delete(head, target):
     """Delete a target value from the linked list."""
     if head.data == target:
+        print(f"Element {target} deleted from the linked list")
         return head.next
 
     current = head
     while current.next:
         if current.next.data == target:
             current.next = current.next.next
+            print(f"Element {target} deleted from the linked list")
             return head
         current = current.next
     print(f"Element {target} not found in the linked list")
@@ -72,11 +78,11 @@ def search(head, target):
     while current:
         if current.data == target:
             print(f"Element {target} found at position {position}")
-            return
+            return position
         current = current.next
         position += 1
     print(f"Element {target} not found")
-    return
+    return None
 
 
 def update(head, old_val, new_val):
@@ -104,7 +110,6 @@ def main():
     head = create(arr)
 
     while True:
-        clear_screen()
         print("Linked List Operations:")
         print("1. Insert")
         print("2. Display")
@@ -114,6 +119,7 @@ def main():
         print("6. Exit")
 
         choice = int(input("Enter your choice: "))
+        clear_screen()
 
         if choice == 1:
             target = int(input("Enter the element to insert: "))
