@@ -1,10 +1,9 @@
-import os
-
 def insert(arr, target, position):
     """Insert an element into the array."""
     arr.insert(position, target)
     print(f"Element {target} inserted at index {position}")
     display(arr)
+
 
 def display(arr):
     """Display the elements of the array."""
@@ -57,6 +56,8 @@ def find_index(arr, target):
 
 def clear_screen():
     """Clear the terminal screen."""
+    import os
+
     os.system("clear")
 
 
@@ -64,6 +65,7 @@ def main():
     arr = [1, 2, 3, 4, 5]
 
     while True:
+        clear_screen()
         print("Array Operations:")
         print("1. Insert")
         print("2. Display")
@@ -75,23 +77,18 @@ def main():
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
-            clear_screen()
             target = int(input("Enter the element to insert: "))
             position = int(input("Enter the position to insert: "))
             insert(arr, target, position)
         elif choice == 2:
-            clear_screen()
             display(arr)
         elif choice == 3:
-            clear_screen()
             target = int(input("Enter the element to delete: "))
             delete(arr, target)
         elif choice == 4:
-            clear_screen()
             target = int(input("Enter the element to search: "))
             search(arr, target)
         elif choice == 5:
-            clear_screen()
             old_val = int(input("Enter the element to update: "))
             new_val = int(input("Enter the new element: "))
             update(arr, old_val, new_val)
