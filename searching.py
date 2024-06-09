@@ -1,4 +1,5 @@
 def linear_search(arr, target):
+    """Linear search algorithm to search for a target in an array"""
     for i in range(len(arr)):
         if arr[i] == target:
             print(f"{target} found at index {i} in the array")
@@ -8,10 +9,12 @@ def linear_search(arr, target):
 
 
 def binary_search(arr, target):
+    """Binary search algorithm to search for a target in a sorted array"""
     left, right = 0, len(arr) - 1
 
     while left <= right:
-
+        mid = (left + right) // 2
+        
         if arr[mid] == target:
             print(f"{target} found at index {mid} in the array")
             return
