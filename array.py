@@ -1,3 +1,6 @@
+import os
+
+
 def insert(arr, target, position):
     """Insert an element into the array."""
     arr.insert(position, target)
@@ -54,18 +57,11 @@ def find_index(arr, target):
     return -1
 
 
-def clear_screen():
-    """Clear the terminal screen."""
-    import os
-
-    os.system("clear")
-
-
 def main():
     arr = [1, 2, 3, 4, 5]
 
     while True:
-        print("Array Operations:")
+        print("\nArray Operations:")
         print("1. Insert")
         print("2. Display")
         print("3. Delete")
@@ -74,7 +70,7 @@ def main():
         print("6. Exit")
 
         choice = int(input("Enter your choice: "))
-        clear_screen()
+        os.system("clear")
 
         if choice == 1:
             target = int(input("Enter the element to insert: "))

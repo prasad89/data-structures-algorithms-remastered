@@ -1,27 +1,10 @@
+import os
+
+
 class Node:
     def __init__(self, data, next=None):
         self.data = data
         self.next = next
-
-
-def create(arr):
-    """Create a singly linked list from an array."""
-    head = Node(arr[0])
-    current = head
-    for i in range(1, len(arr)):
-        current.next = Node(arr[i])
-        current = current.next
-    return head
-
-
-def get_node_at(head, position):
-    """Return the node at a specific position (1-based index)."""    
-    current = head
-    for _ in range(position - 1):
-        if current is None:
-            return None
-        current = current.next
-    return current
 
 
 def insert(head, target, position):
@@ -36,7 +19,7 @@ def insert(head, target, position):
         return new_node
 
     prev = get_node_at(head, position - 1)
-    if prev is None:
+    if not prev:
         print("Invalid position")
         return head
 
@@ -56,12 +39,12 @@ def display(head):
 
 def delete(head, target):
     """Delete a target value from the linked list."""
-    if head.data == target:
+    if head and head.data == target:
         print(f"Element {target} deleted from the linked list")
         return head.next
 
     current = head
-    while current.next:
+    while current and current.next:
         if current.next.data == target:
             current.next = current.next.next
             print(f"Element {target} deleted from the linked list")
@@ -98,11 +81,24 @@ def update(head, old_val, new_val):
     return head
 
 
-def clear_screen():
-    """Clear the terminal screen."""
-    import os
+def create(arr):
+    """Create a singly linked list from an array."""
+    head = Node(arr[0])
+    current = head
+    for i in range(1, len(arr)):
+        current.next = Node(arr[i])
+        current = current.next
+    return head
 
-    os.system("clear")
+
+def get_node_at(head, position):
+    """Return the node at a specific position (1-based index)."""
+    current = head
+    for _ in range(position - 1):
+        if not current:
+            return None
+        current = current.next
+    return current
 
 
 def main():
@@ -110,7 +106,7 @@ def main():
     head = create(arr)
 
     while True:
-        print("Linked List Operations:")
+        print("\nLinked List Operations:")
         print("1. Insert")
         print("2. Display")
         print("3. Delete")
@@ -119,7 +115,7 @@ def main():
         print("6. Exit")
 
         choice = int(input("Enter your choice: "))
-        clear_screen()
+        os.system("clear")
 
         if choice == 1:
             target = int(input("Enter the element to insert: "))

@@ -14,7 +14,7 @@ def binary_search(arr, target):
 
     while left <= right:
         mid = (left + right) // 2
-        
+
         if arr[mid] == target:
             print(f"{target} found at index {mid} in the array")
             return
